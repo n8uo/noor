@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لجامعة المصطفى | منصة التعلم الجامعية</title>
+  <meta name="description" content="منصة تعليمية جامعية متكاملة - إدارة المقررات والدرجات والإعلانات">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <!-- Login Page -->
+  <div id="login-page" class="auth-page">
+    <div class="auth-bg">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      <div class="floating-shape shape-4"></div>
+    </div>
+    <div class="auth-container">
+      <div class="auth-card glass-card">
+        <div class="auth-header">
+          <div class="auth-logo">
+            <span class="material-icons-round">school</span>
+          </div>
+          <h1>الجامعة الذكية</h1>
+          <p>منصة التعلم الجامعية المتكاملة</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active">
+          <h2>تسجيل الدخول</h2>
+          <div class="form-group">
+            <span class="material-icons-round">badge</span>
+            <input type="text" id="login-student-id" placeholder="الرقم الجامعي" required>
+          </div>
+          <div class="form-group">
+            <span class="material-icons-round">lock</span>
+            <input type="password" id="login-password" placeholder="كلمة المرور" required>
+          </div>
+          <div id="login-error" class="error-msg"></div>
+          <button type="submit" class="btn-primary" id="login-btn">
+            <span>تسجيل الدخول</span>
+            <span class="material-icons-round">login</span>
+          </button>
+          <p class="auth-switch">ليس لديك حساب؟ <a href="#" id="show-register">إنشاء حساب جديد</a></p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" class="auth-form">
+          <h2>إنشاء حساب جديد</h2>
+          <div class="form-group">
+            <span class="material-icons-round">badge</span>
+            <input type="text" id="reg-student-id" placeholder="الرقم الجامعي" required>
+          </div>
+          <div class="form-group">
+            <span class="material-icons-round">person</span>
+            <input type="text" id="reg-name" placeholder="الاسم الكامل" required>
+          </div>
+          <div class="form-group">
+            <span class="material-icons-round">email</span>
+            <input type="email" id="reg-email" placeholder="البريد الإلكتروني" required>
+          </div>
+          <div class="form-group">
+            <span class="material-icons-round">apartment</span>
+            <input type="text" id="reg-department" placeholder="القسم" required>
+          </div>
+          <div class="form-group">
+            <span class="material-icons-round">lock</span>
+            <input type="password" id="reg-password" placeholder="كلمة المرور" required>
+          </div>
+          <div id="register-error" class="error-msg"></div>
+          <button type="submit" class="btn-primary" id="register-btn">
+            <span>إنشاء الحساب</span>
+            <span class="material-icons-round">person_add</span>
+          </button>
+          <p class="auth-switch">لديك حساب بالفعل؟ <a href="#" id="show-login">تسجيل الدخول</a></p>
+        </form>
+
+        <div class="demo-info">
+          <p><strong>حساب تجريبي:</strong> الرقم: STU001 | كلمة المرور: 123456</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="app hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <span class="material-icons-round">school</span>
+          <h2>الجامعة الذكية</h2>
+        </div>
+        <button id="sidebar-close" class="sidebar-close">
+          <span class="material-icons-round">close</span>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <span class="material-icons-round">dashboard</span>
+          <span>لوحة التحكم</span>
+        </a>
+        <a href="#" class="nav-item" data-page="courses">
+          <span class="material-icons-round">menu_book</span>
+          <span>المقررات</span>
+        </a>
+        <a href="#" class="nav-item" data-page="grades">
+          <span class="material-icons-round">grade</span>
+          <span>الدرجات</span>
+        </a>
+        <a href="#" class="nav-item" data-page="announcements">
+          <span class="material-icons-round">campaign</span>
+          <span>الإعلانات</span>
+        </a>
+        <a href="#" class="nav-item" data-page="profile">
+          <span class="material-icons-round">person</span>
+          <span>الملف الشخصي</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="logout-btn" class="nav-item logout-btn">
+          <span class="material-icons-round">logout</span>
+          <span>تسجيل الخروج</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <button id="menu-toggle" class="menu-toggle">
+          <span class="material-icons-round">menu</span>
+        </button>
+        <div class="topbar-title">
+          <h2 id="page-title">لوحة التحكم</h2>
+        </div>
+        <div class="topbar-user">
+          <div class="user-avatar" id="topbar-avatar">
+            <span class="material-icons-round">person</span>
+          </div>
+          <span id="topbar-name">الطالب</span>
+        </div>
+      </header>
+
+      <!-- Pages Container -->
+      <div class="content-area">
+
+        <!-- Dashboard Page -->
+        <section id="page-dashboard" class="page active">
+          <div class="welcome-banner glass-card">
+            <div class="welcome-text">
+              <h2>مرحباً، <span id="welcome-name">الطالب</span> 👋</h2>
+              <p>أهلاً بك في منصة الجامعة الذكية. تابع مقرراتك ودرجاتك وآخر الإعلانات.</p>
+            </div>
+            <div class="welcome-illustration">
+              <span class="material-icons-round">auto_stories</span>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card glass-card">
+              <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <span class="material-icons-round">menu_book</span>
+              </div>
+              <div class="stat-info">
+                <h3 id="stat-courses">0</h3>
+                <p>المقررات المسجلة</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                <span class="material-icons-round">trending_up</span>
+              </div>
+              <div class="stat-info">
+                <h3 id="stat-gpa">0.00</h3>
+                <p>المعدل التراكمي</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                <span class="material-icons-round">campaign</span>
+              </div>
+              <div class="stat-info">
+                <h3 id="stat-announcements">0</h3>
+                <p>الإعلانات الجديدة</p>
+              </div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                <span class="material-icons-round">emoji_events</span>
+              </div>
+              <div class="stat-info">
+                <h3 id="stat-credits">0</h3>
+                <p>الساعات المكتسبة</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="dash-section">
+              <h3><span class="material-icons-round">campaign</span> آخر الإعلانات</h3>
+              <div id="dash-announcements" class="dash-list"></div>
+            </div>
+            <div class="dash-section">
+              <h3><span class="material-icons-round">menu_book</span> مقرراتي</h3>
+              <div id="dash-courses" class="dash-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Courses Page -->
+        <section id="page-courses" class="page">
+          <div class="page-header">
+            <h2><span class="material-icons-round">menu_book</span> المقررات الدراسية</h2>
+            <p>الفصل الأول 2026</p>
+          </div>
+          <div id="courses-grid" class="courses-grid"></div>
+
+          <!-- Course Detail Modal -->
+          <div id="course-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content glass-card">
+              <button class="modal-close" id="close-course-modal">
+                <span class="material-icons-round">close</span>
+              </button>
+              <div id="course-detail-content"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Grades Page -->
+        <section id="page-grades" class="page">
+          <div class="page-header">
+            <h2><span class="material-icons-round">grade</span> الدرجات والمعدل</h2>
+            <p>نتائج الفصل الدراسي الحالي</p>
+          </div>
+          <div class="gpa-overview glass-card" id="gpa-overview"></div>
+          <div class="grades-table-wrapper">
+            <table class="grades-table" id="grades-table">
+              <thead>
+                <tr>
+                  <th>رمز المقرر</th>
+                  <th>اسم المقرر</th>
+                  <th>النصفي (30)</th>
+                  <th>النهائي (40)</th>
+                  <th>الواجبات (20)</th>
+                  <th>الحضور (10)</th>
+                  <th>المجموع</th>
+                  <th>التقدير</th>
+                </tr>
+              </thead>
+              <tbody id="grades-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Announcements Page -->
+        <section id="page-announcements" class="page">
+          <div class="page-header">
+            <h2><span class="material-icons-round">campaign</span> الإعلانات</h2>
+            <p>آخر الأخبار والتحديثات</p>
+          </div>
+          <div id="announcements-list" class="announcements-list"></div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="page-profile" class="page">
+          <div class="page-header">
+            <h2><span class="material-icons-round">person</span> الملف الشخصي</h2>
+            <p>معلومات الحساب والإعدادات</p>
+          </div>
+          <div class="profile-content">
+            <div class="profile-card glass-card">
+              <div class="profile-avatar-large">
+                <span class="material-icons-round">person</span>
+              </div>
+              <div id="profile-info" class="profile-info"></div>
+            </div>
+            <div class="profile-edit glass-card">
+              <h3>تعديل الملف الشخصي</h3>
+              <form id="profile-form">
+                <div class="form-group">
+                  <label>الاسم الكامل</label>
+                  <input type="text" id="edit-name" placeholder="الاسم الكامل">
+                </div>
+                <div class="form-group">
+                  <label>البريد الإلكتروني</label>
+                  <input type="email" id="edit-email" placeholder="البريد الإلكتروني">
+                </div>
+                <h3 style="margin-top: 1.5rem;">تغيير كلمة المرور</h3>
+                <div class="form-group">
+                  <label>كلمة المرور الحالية</label>
+                  <input type="password" id="edit-current-pass" placeholder="كلمة المرور الحالية">
+                </div>
+                <div class="form-group">
+                  <label>كلمة المرور الجديدة</label>
+                  <input type="password" id="edit-new-pass" placeholder="كلمة المرور الجديدة">
+                </div>
+                <div id="profile-msg" class="success-msg"></div>
+                <button type="submit" class="btn-primary">
+                  <span>حفظ التغييرات</span>
+                  <span class="material-icons-round">save</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+
+</html>
